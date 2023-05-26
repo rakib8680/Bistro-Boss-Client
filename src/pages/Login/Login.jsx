@@ -1,13 +1,17 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
 
     const [disabled, setDisabled] = useState(true);
-    const {} = useContext(AuthContext)
+    const { signIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const captchaRef = useRef(null)
     useEffect(() => {
@@ -32,21 +36,20 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
-        // signIn(email, password)
-            // .then(result => {
-            //     const user = result.user;
-            //     console.log(user);
-            //     Swal.fire({
-            //         title: 'User Login Successful.',
-            //         showClass: {
-            //             popup: 'animate__animated animate__fadeInDown'
-            //         },
-            //         hideClass: {
-            //             popup: 'animate__animated animate__fadeOutUp'
-            //         }
-            //     });
-            //     // navigate(from, { replace: true });
-            // })
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                Swal.fire({
+                    title: 'User Login Successful.',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
+                navigate(from, { replace: true });
+            })
     }
 
 
@@ -90,7 +93,7 @@ const Login = () => {
                                 <input className="btn btn-primary" type="submit" value="Login" disabled={disabled} />
                             </div>
                         </form>
-                        <p><small>New Here? <Link to="/signup">Create an account</Link> </small></p>
+                        <p className='text-center mb-7'><small>New Here? <Link to="/signup" className='font-semibold'>Create an account</Link> </small></p>
                     </div>
                 </div>
             </div>
