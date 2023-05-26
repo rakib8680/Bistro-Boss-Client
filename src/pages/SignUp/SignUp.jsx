@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
+import { AuthContext } from "../../providers/AuthProvider";
 
 const SignUp = () => {
 
@@ -12,7 +12,7 @@ const SignUp = () => {
     const navigate = useNavigate();
 
     const onSubmit = data => {
-        console.log(data);
+        // console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 // const loggedUser = result.user;
@@ -91,7 +91,7 @@ const SignUp = () => {
                                 <input className="btn btn-primary" type="submit" value="Sign Up" />
                             </div>
                         </form>
-                        <p><small>Already have an account <Link to="/login">Login</Link></small></p>
+                        <p className="text-center mb-7  ">   <small>Already have an account <Link to="/login">Login</Link></small></p>
                     </div>
                 </div>
             </div>
