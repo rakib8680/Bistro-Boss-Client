@@ -22,19 +22,22 @@ const NavBar = () => {
         <li><Link to="/secret">Secret</Link></li>
         <li>
             <Link to="/dashboard/myCart">
-                <button className="btn gap-2">
-                    <FaShoppingCart />
-                    <div className="badge badge-secondary">{cart?.length || 0}</div>
+                <button className="btn btn-ghost gap-1">
+                    <FaShoppingCart size={20} />
+                    <div className="badge badge-warning">{cart?.length || 0}</div>
                 </button>
             </Link>
         </li>
         {
-            user ? <>
-                <li><span>{user?.displayName}</span></li>
-                <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
-            </> : <>
-                <li><Link to="/login">Login</Link></li>
-            </>
+            user ?
+                <>
+                    <li><span>{user?.displayName}</span></li>
+                    <li><button onClick={handleLogOut} className="btn btn-ghost my-auto">LogOut</button></li>
+                </>
+                :
+                <>
+                    <li><Link to="/login">Login</Link></li>
+                </>
         }
     </>
 
