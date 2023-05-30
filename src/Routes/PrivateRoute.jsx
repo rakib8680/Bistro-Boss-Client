@@ -9,7 +9,7 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation();
 
     if (loading) {
-        return <div className='flex justify-center h-[80vh] items-center bg-secondary'><ScaleLoader color="#be0003" size={25} /></div>
+        return <div className='flex justify-center h-[80vh] items-center bg-white'><ScaleLoader color="#be0003" size={25} /></div>
     }
 
     if (user) {

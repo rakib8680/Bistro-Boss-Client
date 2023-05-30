@@ -3,6 +3,7 @@ import {
 } from "react-router-dom";
 import DashBoard from "../Layout/DashBoard";
 import Main from "../Layout/Main";
+import AllUsers from "../pages/dashboard/AllUsers/AllUsers";
 import MyCart from "../pages/dashboard/Mycart/MyCart";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
       {
         path: 'myCart',
         element: <MyCart></MyCart>
+      },
+      {
+        path: 'allUsers',
+        element: <AllUsers></AllUsers>
       }
     ]
   }
