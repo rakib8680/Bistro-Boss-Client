@@ -2,13 +2,15 @@ import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FaShoppingCart, FaWallet, FaCalendarAlt, FaHome, FaHamburger, FaListAlt, FaPhoneAlt, FaUtensils, FaBook, FaUsers, FaBars } from 'react-icons/fa'
 import useCart from '../hooks/useCart';
+import useAdmin from '../hooks/useAdmin';
 
 
 const DashBoard = () => {
 
     const [cart] = useCart()
 
-    const isAdmin = true;
+    // const isAdmin = true;
+    const [isAdmin] = useAdmin();
 
     return (
         <>
@@ -32,7 +34,7 @@ const DashBoard = () => {
                                     <li><NavLink to='/dashboard/manageItems'><FaBars />Manage Items</NavLink></li>
                                     <li><NavLink to='/dashboard/manageBookings'><FaBook />Manage Bookings</NavLink></li>
                                     <li><NavLink to='/dashboard/allUsers'><FaUsers />All Users</NavLink></li>
-                                    
+
                                 </>
                                 :
                                 <>
