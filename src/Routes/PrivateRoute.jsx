@@ -7,7 +7,6 @@ import {  ScaleLoader } from "react-spinners";
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     const location = useLocation();
-
     if (loading) {
         return <div className='flex justify-center h-[80vh] items-center bg-white'><ScaleLoader color="#be0003" size={25} /></div>
     }
