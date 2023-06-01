@@ -5,6 +5,7 @@ import DashBoard from "../Layout/DashBoard";
 import Main from "../Layout/Main";
 import AddItem from "../pages/dashboard/AddItem/AddItem";
 import AllUsers from "../pages/dashboard/AllUsers/AllUsers";
+import ManageItems from "../pages/dashboard/ManageItems/ManageItems";
 import MyCart from "../pages/dashboard/Mycart/MyCart";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
@@ -60,8 +61,15 @@ export const router = createBrowserRouter([
       {
         path: 'addItem',
         element:
-            <AdminRoute>
+          <AdminRoute>
             <AddItem />
+          </AdminRoute>
+      },
+      {
+        path: 'manageItems',
+        element:
+          <AdminRoute>
+            <ManageItems />
           </AdminRoute>
       }
     ]

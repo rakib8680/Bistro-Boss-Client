@@ -1,14 +1,17 @@
 import React from 'react';
 import SectionTitle from '../../../components/SectionTitle/SectionTitle';
 import { useForm } from "react-hook-form";
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2'
 
 
 const AddItem = () => {
+    const [axiosSecure] = useAxiosSecure()
     const imageHostingApi = import.meta.env.VITE_IMAGE_TOKEN;
 
     const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${imageHostingApi}`
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const onSubmit = data => {
         const formData = new FormData()
@@ -24,6 +27,19 @@ const AddItem = () => {
                     const { name, price, category, recipe } = data
                     const newItem = { name, price, category, recipe, image: imgUrl }
                     console.log(newItem);
+                    axiosSecure.post('/menu', newItem)
+                        .then(data => {
+                            if (data.data.insertedId) {
+                                reset()
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'Item Added Successfully', 
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                  })
+                            }
+                        })
                 }
             })
 
