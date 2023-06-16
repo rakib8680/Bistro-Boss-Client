@@ -15,7 +15,7 @@ const FoodCard = ({ item }) => {
     const handleAddToCart = item => {
         if (user && user.email) {
             const cartItem = { menuItemId: _id, name, image, price, email: user.email}
-            fetch('http://localhost:5000/carts', {
+            fetch('https://bistro-boss-server-delta-blush.vercel.app/carts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const FoodCard = ({ item }) => {
 
     return (
         <div>
-            <div className="card w-96 h-[500px] bg-base-100 shadow-xl">
+            <div className="card   h-[500px] bg-base-100 shadow-xl">
                 <figure className="px-10 pt-10">
                     <img src={image} className="rounded-xl" />
                 </figure>

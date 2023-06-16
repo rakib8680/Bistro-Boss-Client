@@ -14,7 +14,7 @@ const AllUsers = () => {
     });
 
     const handleMakeAdmin = user => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://bistro-boss-server-delta-blush.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH',
 
         })
